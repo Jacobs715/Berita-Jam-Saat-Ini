@@ -1,0 +1,413 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+    color:white;
+}
+
+.container{
+    width:420px;
+    max-width:95%;
+    text-align:center;
+}
+
+h1{
+    font-size:28px;
+    letter-spacing:4px;
+    margin-bottom:8px;
+}
+
+.tanggal{
+    font-size:14px;
+    color:#cbd5e1;
+    margin-bottom:25px;
+}
+
+.clock{
+    width:330px;
+    height:330px;
+    border:10px solid white;
+    border-radius:50%;
+    margin:auto;
+    position:relative;
+    background:radial-gradient(circle,#ffffff 0%,#f1f5f9 100%);
+    box-shadow:
+        0 0 30px rgba(255,255,255,.15),
+        inset 0 0 20px rgba(0,0,0,.15);
+}
+
+/* Angka */
+
+.number{
+    position:absolute;
+    color:#111827;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.n12{top:12px;left:50%;transform:translateX(-50%)}
+.n1{top:28px;right:75px}
+.n2{top:70px;right:30px}
+.n3{top:50%;right:10px;transform:translateY(-50%)}
+.n4{bottom:70px;right:30px}
+.n5{bottom:28px;right:75px}
+.n6{bottom:12px;left:50%;transform:translateX(-50%)}
+.n7{bottom:28px;left:75px}
+.n8{bottom:70px;left:30px}
+.n9{top:50%;left:10px;transform:translateY(-50%)}
+.n10{top:70px;left:22px}
+.n11{top:28px;left:68px}
+
+/* Titik jam */
+
+.clock::before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    background:
+        repeating-conic-gradient(
+            #111827 0deg 1deg,
+            transparent 1deg 6deg
+        );
+    mask:radial-gradient(circle,transparent 78%,black 79%);
+}
+
+/* Jarum */
+
+.hand{
+    position:absolute;
+    bottom:50%;
+    left:50%;
+    transform-origin:bottom center;
+    border-radius:20px;
+}
+
+.hour{
+    width:8px;
+    height:80px;
+    background:#111827;
+    transform:translateX(-50%) rotate(0deg);
+}
+
+.minute{
+    width:6px;
+    height:110px;
+    background:#374151;
+    transform:translateX(-50%) rotate(0deg);
+}
+
+.second{
+    width:2px;
+    height:125px;
+    background:#dc2626;
+    transform:translateX(-50%) rotate(0deg);
+}
+
+.center{
+    width:18px;
+    height:18px;
+    background:#dc2626;
+    border-radius:50%;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    border:3px solid white;
+}
+
+/* Digital */
+
+.digital{
+    margin-top:20px;
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+}
+
+#digitalTime{
+    font-size:34px;
+    font-weight:bold;
+    letter-spacing:3px;
+}
+
+.digital small{
+    color:#cbd5e1;
+}
+
+/* News */
+
+.newsBox{
+    margin-top:25px;
+    background:white;
+    color:#111827;
+    border-radius:18px;
+    padding:18px;
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+.newsHeader{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    margin-bottom:10px;
+}
+
+.newsHeader h2{
+    font-size:15px;
+    letter-spacing:1px;
+}
+
+.live{
+    width:10px;
+    height:10px;
+    background:red;
+    border-radius:50%;
+    animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+
+    0%{
+        box-shadow:0 0 0 0 rgba(255,0,0,.7);
+    }
+
+    70%{
+        box-shadow:0 0 0 10px rgba(255,0,0,0);
+    }
+
+    100%{
+        box-shadow:0 0 0 0 rgba(255,0,0,0);
+    }
+
+}
+
+.newsTime{
+    font-size:11px;
+    color:#64748b;
+    margin-bottom:10px;
+}
+
+.ticker{
+    overflow:hidden;
+    white-space:nowrap;
+    width:100%;
+    border-top:1px solid #e5e7eb;
+    padding-top:12px;
+}
+
+.tickerText{
+    display:inline-block;
+    font-size:14px;
+    font-weight:600;
+    animation:jalan 18s linear infinite;
+}
+
+@keyframes jalan{
+
+    from{
+        transform:translateX(100%);
+    }
+
+    to{
+        transform:translateX(-100%);
+    }
+
+}
+
+@media(max-width:450px){
+
+    .clock{
+        width:280px;
+        height:280px;
+    }
+
+    .hour{
+        height:65px;
+    }
+
+    .minute{
+        height:90px;
+    }
+
+    .second{
+        height:105px;
+    }
+
+}
+
+/* =================================
+   KETERANGAN KREATOR
+================================= */
+
+.creator-wrapper{
+    position:fixed;
+    top:20px;
+    right:20px;
+    z-index:1000;
+}
+
+/* Tombol */
+
+.creator-button{
+    border:none;
+    background:rgba(255,255,255,0.12);
+    color:white;
+    padding:10px 16px;
+    border-radius:10px;
+    cursor:pointer;
+
+    font-size:13px;
+    font-weight:bold;
+
+    border:1px solid rgba(255,255,255,0.25);
+
+    backdrop-filter:blur(10px);
+
+    transition:.3s;
+}
+
+.creator-button:hover{
+    background:rgba(255,255,255,0.22);
+    transform:translateY(-2px);
+}
+
+/* Kartu */
+
+.creator-card{
+    position:absolute;
+
+    top:48px;
+    right:0;
+
+    width:310px;
+
+    padding:20px;
+
+    background:rgba(15,23,42,.96);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:16px;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.4);
+
+    backdrop-filter:blur(15px);
+
+    opacity:0;
+
+    transform:
+        translateY(-10px)
+        scale(.96);
+
+    pointer-events:none;
+
+    transition:
+        opacity .3s ease,
+        transform .3s ease;
+}
+
+/* Saat dibuka */
+
+.creator-card.active{
+    opacity:1;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    pointer-events:auto;
+}
+
+/* Judul */
+
+.creator-title{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    font-size:16px;
+    font-weight:bold;
+
+    letter-spacing:.5px;
+}
+
+.creator-title span{
+    color:#fbbf24;
+}
+
+.creator-line{
+    width:100%;
+    height:1px;
+
+    background:rgba(255,255,255,.15);
+
+    margin:14px 0;
+}
+
+/* Isi biodata */
+
+.creator-info{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.creator-info p{
+    margin:0;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:3px;
+}
+
+.creator-info strong{
+    font-size:11px;
+
+    color:#94a3b8;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+}
+
+.creator-info span{
+    font-size:13px;
+
+    color:#f8fafc;
+
+    line-height:1.5;
+}
+
+/* Tampilan HP */
+
+@media(max-width:500px){
+
+    .creator-wrapper{
+        top:10px;
+        right:10px;
+    }
+
+    .creator-card{
+        width:280px;
+    }
+
+    .creator-button{
+        font-size:12px;
+        padding:9px 12px;
+    }
+
+}
